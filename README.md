@@ -136,3 +136,5 @@ size limits of the included evaluation toolset.
 
 Sadly, the *LM3S9D92* processor has gone into "*not* *recommended* *for*
 *new* *designs*" status, which probably makes the dev kits hard to come by.
+
+ - *Roger Ivie*
