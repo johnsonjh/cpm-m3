@@ -1,0 +1,299 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+base                0x4               ed.o
+main_env            0x28              ed.o
+back                0x2               ed.o
+relline             0x2               ed.o
+fcb1                0x4               ed.o
+scratch             0x64              ed.o
+tmpfcb              0x24              ed.o
+rbp                 0x2               ed.o
+_base               0x4               glue.o
+nbuf                0x2               ed.o
+baseline            0x2               ed.o
+flag                0x1               ed.o
+buff                0x4               ed.o
+nsource             0x2               ed.o
+distance            0x2               ed.o
+sbuffadr            0x4               ed.o
+xbp                 0x2               ed.o
+front               0x2               ed.o
+dtype               0x3               ed.o
+direction           0x4               ed.o
+mt                  0x2               ed.o
+dcnt                0x4               ed.o
+dbuffadr            0x4               ed.o
+macro               0x80              ed.o
+xbuff               0x80              ed.o
+delimiter           0x4               ed.o
+mi                  0x2               ed.o
+max                 0x2               ed.o
+xp                  0x2               ed.o
+wbp                 0x2               ed.o
+pwd                 0x10              ed.o
+ndest               0x2               ed.o
+readbuff            0x1               ed.o
+dfcb                0x24              ed.o
+glue_brk            0x4               glue.o
+maxm                0x2               ed.o
+ver                 0x4               ed.o
+lastc               0x2               ed.o
+first               0x2               ed.o
+chr                 0x4               ed.o
+bufflength          0x2               ed.o
+mp                  0x2               ed.o
+hmax                0x2               ed.o
+inserting           0x1               ed.o
+err_msg             0x4               ed.o
+wbe                 0x2               ed.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x20000100     0x4128
+ *(.text)
+ .text          0x20000100       0x10 header.o
+                0x20000100                _start
+ .text          0x20000110      0x1c8 glue.o
+                0x20000110                glue_outhex
+                0x2000014c                glue_outzstring
+                0x20000174                glue_entry
+                0x200001f0                __BDOS
+                0x2000021c                _exit
+                0x2000023c                memcpy
+                0x20000270                sbrk
+ .text          0x200002d8       0x16 setjmp.o
+                0x200002d8                setjmp
+                0x200002e4                longjmp
+ *fill*         0x200002ee        0x2 
+ .text          0x200002f0     0x3d28 ed.o
+                0x200002f0                printch
+                0x2000031c                ttych
+                0x20000364                backspace
+                0x200003a4                printabs
+                0x200003e0                graphic
+                0x20000434                printc
+                0x20000468                crlf
+                0x2000047c                print
+                0x2000049c                perror
+                0x200004c8                open
+                0x20000514                readcom
+                0x20000538                break_key
+                0x20000564                move
+                0x20000590                write_xfcb
+                0x200005d0                reboot
+                0x200005fc                time
+                0x20000618                abort
+                0x20000634                ferr
+                0x20000658                delete_file
+                0x20000690                rename_file
+                0x200006d4                make_file
+                0x20000720                fill
+                0x20000744                settype
+                0x20000764                fillsource
+                0x20000828                getsource
+                0x200008a0                erase_bak
+                0x20000918                writedest
+                0x200009ac                putdest
+                0x20000a08                putxfer
+                0x20000ab0                close_xfer
+                0x20000ae4                compare_xfer
+                0x20000b24                append_xfer
+                0x20000be4                moveup
+                0x20000c04                finis
+                0x20000d38                ucase
+                0x20000d64                getpasswd
+                0x20000e54                utran
+                0x20000e88                printvalue
+                0x20000eec                printline
+                0x20000f3c                readc
+                0x20001138                get_uc
+                0x200011bc                delim
+                0x2000123c                parse_fcb
+                0x20001434                setdest
+                0x20001550                readfile
+                0x200015d0                wrt_xfer
+                0x200016c4                setup
+                0x20001968                distnzero
+                0x200019a4                setlimits
+                0x20001b24                mem_move
+                0x20001c20                setfront
+                0x20001c94                setclimits
+                0x20001d70                readline
+                0x20001e20                writeline
+                0x20001ea8                wrhalf
+                0x20001f04                writeout
+                0x20001f8c                terminate
+                0x20001fe8                insert
+                0x2000206c                scanning
+                0x200020b8                collect
+                0x200021b0                find
+                0x20002280                setfind
+                0x200022ac                chkfound
+                0x200022dc                parse_lib
+                0x20002364                typelines
+                0x20002480                page
+                0x20002530                wait
+                0x20002560                apphalf
+                0x200025ac                inscrlf
+                0x200025d4                insert_chars
+                0x20002a48                read_lib
+                0x20002b48                juxt
+                0x20002c5c                next
+                0x20002d2c                readctran
+                0x20002dc8                snglrcom
+                0x20002e54                number
+                0x20002eb4                reldistance
+                0x20002f38                simple
+                0x20003160                controlled
+                0x20003460                repeated
+                0x20003780                allocate_memory
+                0x2000393c                set_up_files
+                0x20003a80                _main
+ *(.rodata)
+ .rodata        0x20004018       0xf8 ed.o
+ *(.data)
+ .data          0x20004110        0x0 header.o
+ .data          0x20004110       0x14 glue.o
+ .data          0x20004124        0x0 setjmp.o
+ .data          0x20004124      0x104 ed.o
+                0x20004124                date
+                0x2000412c                rfcb
+                0x20004150                xfcb
+                0x20004174                onefile
+                0x20004175                lineset
+                0x20004176                tail
+                0x20004178                libfcb
+                0x2000419c                tempfl
+                0x200041a0                backup
+                0x200041a4                scolumn
+                0x200041a8                lpp
+                0x200041ac                pb
+                0x200041b0                diskfull
+                0x200041bc                dirfull
+                0x200041cc                not_found
+                0x200041dc                invalid
+                0x200041f0                pwd_err
+                0x20004204                notavail
+
+.glue_7         0x20004228        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x20004228        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x20004228        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x20004228        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x20004228        0x0
+ .iplt          0x00000000        0x0 header.o
+
+.igot.plt       0x20004228        0x0
+ .igot.plt      0x00000000        0x0 header.o
+
+.rel.dyn        0x20004228        0x0
+ .rel.iplt      0x00000000        0x0 header.o
+
+.bss            0x20004228      0x2f2
+ *(.bss)
+ .bss           0x20004228        0x0 header.o
+ .bss           0x20004228        0x0 glue.o
+ .bss           0x20004228        0x0 setjmp.o
+ .bss           0x20004228       0xa0 ed.o
+                0x20004228                xfcbext
+                0x2000422c                xfcbrec
+                0x20004230                newfile
+                0x20004231                xferon
+                0x20004232                printsuppress
+                0x20004233                sys
+                0x20004234                protection
+                0x20004235                translate
+                0x20004236                upper
+                0x20004237                has_bdos3
+                0x20004238                dot_found
+                0x2000423c                column
+                0x20004240                combuf
+                0x200042c4                ncmd
+ *(COMMON)
+ COMMON         0x200042c8        0x8 glue.o
+                0x200042c8                _base
+                0x200042cc                glue_brk
+ COMMON         0x200042d0      0x24a ed.o
+                0x200042d0                base
+                0x200042d4                main_env
+                0x200042fc                back
+                0x200042fe                relline
+                0x20004300                fcb1
+                0x20004304                scratch
+                0x20004368                tmpfcb
+                0x2000438c                rbp
+                0x2000438e                nbuf
+                0x20004390                baseline
+                0x20004392                flag
+                0x20004394                buff
+                0x20004398                nsource
+                0x2000439a                distance
+                0x2000439c                sbuffadr
+                0x200043a0                xbp
+                0x200043a2                front
+                0x200043a4                dtype
+                0x200043a8                direction
+                0x200043ac                mt
+                0x200043b0                dcnt
+                0x200043b4                dbuffadr
+                0x200043b8                macro
+                0x20004438                xbuff
+                0x200044b8                delimiter
+                0x200044bc                mi
+                0x200044be                max
+                0x200044c0                xp
+                0x200044c2                wbp
+                0x200044c4                pwd
+                0x200044d4                ndest
+                0x200044d6                readbuff
+                0x200044d8                dfcb
+                0x200044fc                maxm
+                0x20004500                ver
+                0x20004504                lastc
+                0x20004506                first
+                0x20004508                chr
+                0x2000450c                bufflength
+                0x2000450e                mp
+                0x20004510                hmax
+                0x20004512                inserting
+                0x20004514                err_msg
+                0x20004518                wbe
+                0x20004228                __bss_start__ = ADDR (.bss)
+                0x2000451a                __bss_end__ = (ADDR (.bss) + SIZEOF (.bss))
+                0x2000451a                __end__ = (ADDR (.bss) + SIZEOF (.bss))
+LOAD header.o
+LOAD glue.o
+LOAD setjmp.o
+LOAD ed.o
+OUTPUT(ed.elf elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x2f
+ .ARM.attributes
+                0x00000000       0x21 header.o
+ .ARM.attributes
+                0x00000021       0x33 glue.o
+ .ARM.attributes
+                0x00000054       0x21 setjmp.o
+ .ARM.attributes
+                0x00000075       0x33 ed.o
+
+.comment        0x00000000       0x30
+ .comment       0x00000000       0x30 glue.o
+                                 0x31 (size before relaxing)
+ .comment       0x00000000       0x31 ed.o

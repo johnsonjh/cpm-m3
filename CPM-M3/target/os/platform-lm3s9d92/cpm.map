@@ -1,0 +1,1005 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+cur_disk            0x2               ccp.o
+load_try            0x1               ccp.o
+dma                 0x83              ccp.o
+gbls                0xf4              bdosmain.o
+subcom              0x81              ccp.o
+autorom             0x1               ccp.o
+crit_dsk            0x2               bdosmain.o
+usercmd             0x82              calledbydri.o
+sub_user            0x2               ccp.o
+sub_index           0x2               ccp.o
+chain_sub           0x1               ccp.o
+tpa_lp              0x4               bdosmain.o
+cmdfcb              0x24              ccp.o
+bios_dirbuf         0x80              modubios.o
+parm                0x78              ccp.o
+user                0x2               ccp.o
+chainp              0x4               ccp.o
+dirflag             0x1               ccp.o
+tpa_lt              0x4               bdosmain.o
+tail                0x4               ccp.o
+subprompt           0x1               ccp.o
+log_dsk             0x2               bdosmain.o
+subfcb              0x24              ccp.o
+first_sub           0x1               ccp.o
+index               0x2               ccp.o
+tpa_hp              0x4               bdosmain.o
+end_of_file         0x1               ccp.o
+tpa_ht              0x4               bdosmain.o
+ro_dsk              0x2               bdosmain.o
+diskflash_alv       0x1c              diskflash.o
+glb_index           0x4               ccp.o
+subdma              0x80              ccp.o
+save_sub            0x81              ccp.o
+user_ptr            0x4               ccp.o
+bios_xfer           0x10              modubios.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crti.o
+LOAD c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+
+bstrap          0x00000000       0x98
+ bootvectors.o(.text)
+ .text          0x00000000       0x40 bootvectors.o
+                0x00000000                bootvectors
+ bstrap.o(.text)
+ .text          0x00000040       0x48 bstrap.o
+                0x00000040                bstrap
+                0x00000084                bstrap_exception
+ .text.__stub   0x00000088       0x10 linker stubs
+ bstrap.o(.rodata)
+
+.text           0x20011e00     0x44e8 load address 0x00000098
+ vectors.o(.text)
+ .text          0x20011e00      0x12c vectors.o
+                0x20011e00                vectors
+ *(.text)
+ .text          0x20011f2c        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crti.o
+ .text          0x20011f2c      0x128 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+ .text          0x20012054        0x0 platform.o
+ .text          0x20012054      0x3f0 bdosmisc.o
+                0x20012054                bdosinit
+                0x200120d4                warmboot
+                0x20012194                prt_err
+                0x200121b8                abrt_err
+                0x200121c8                ext_err
+                0x20012260                ro_err
+                0x20012324                error
+                0x20012394                setexc
+                0x200123e0                set_tpa
+ .text          0x20012444      0x3e0 bdosmain.o
+                0x20012444                tmp_sel
+                0x20012478                _bdos
+ .text          0x20012824      0x38c bdosrw.o
+                0x20012824                blkindx
+                0x2001284c                blknum
+                0x20012868                setblk
+                0x20012890                do_io
+                0x200128b4                new_ext
+                0x2001298c                calcext
+                0x200129cc                get_rc
+                0x200129e8                bdosrw
+ .text          0x20012bb0     0x1d88 ccp.o
+                0x20012bb0                cr_lf
+                0x20012bc4                cpy
+                0x20012bd4                strcmp
+                0x20012c28                copy_cmd
+                0x20012cb0                prompt
+                0x20012d14                echo_cmd
+                0x20012d74                check_cmd
+                0x20012e30                get_cmd
+                0x20012f00                scan_cmd
+                0x20012f48                get_parms
+                0x20013008                delim
+                0x20013050                true_char
+                0x20013080                fill_fcb
+                0x2001324c                decode
+                0x200133b4                too_many
+                0x200133e4                find_colon
+                0x2001341c                chk_colon
+                0x20013460                dir_cmd
+                0x2001360c                type_cmd
+                0x2001372c                ren_cmd
+                0x20013a3c                era_cmd
+                0x20013b38                user_cmd
+                0x20013bd0                cmd_file
+                0x200140d0                sub_read
+                0x200140f8                dollar
+                0x20014250                comments
+                0x200142f0                translate
+                0x20014480                submit_cmd
+                0x2001455c                execute_cmd
+                0x2001467c                ccp
+ .text          0x20014938      0x39c conbdos.o
+                0x20014938                constat
+                0x20014954                conbrk
+                0x200149bc                conout
+                0x20014a1c                tabout
+                0x20014a44                cookdout
+                0x20014a6c                getch
+                0x20014aac                conin
+                0x20014ad4                rawconio
+                0x20014af8                prt_line
+                0x20014b24                newline
+                0x20014b48                backsp
+                0x20014bb4                readline
+ .text          0x20014cd4      0x328 dskutil.o
+                0x20014cd4                rdwrt
+                0x20014d50                dir_rd
+                0x20014d68                dchksum
+                0x20014d90                dir_wr
+                0x20014dc0                dirscan
+                0x20014f08                setaloc
+                0x20014f3c                clraloc
+                0x20014f74                chkaloc
+                0x20014f9c                getaloc
+ .text          0x20014ffc      0x63c fileio.o
+                0x20014ffc                alltrue
+                0x20015000                alloc
+                0x2001504c                seldsk
+                0x2001514c                move
+                0x20015168                match
+                0x200151d4                close
+                0x200152cc                matchit
+                0x200152d8                openfile
+                0x20015320                flushit
+                0x2001534c                close_fi
+                0x20015374                search
+                0x200153e0                create
+                0x20015440                delete
+                0x200154ac                rename
+                0x200154f8                set_attr
+                0x20015520                extsize
+                0x20015534                fsize
+                0x20015564                setran
+                0x20015584                getsize
+                0x200155d4                free_sp
+ .text          0x20015638       0x9c iosys.o
+                0x20015638                do_phio
+ .text          0x200156d4      0x258 glue.o
+                0x200156d4                glue_outzstring
+                0x200156ec                glue_outhex
+                0x2001570c                glue_callbios
+                0x2001585c                glue_enterprogram
+                0x2001586c                glue_loadcom
+ .text          0x2001592c      0x178 calledbydri.o
+                0x2001592c                bdos
+                0x20015954                udiv
+                0x20015964                swap
+                0x200159a8                pgmld
+                0x20015a98                initexc
+                0x20015a9c                load68k
+                0x20015aa0                traphndl
+ *fill*         0x20015aa4        0xc 
+ .text          0x20015ab0       0x20 arch-m3-noicache.o
+                0x20015ab0                arch_enter
+ .text          0x20015ad0      0x328 modubios.o
+                0x20015ad0                bios_cboot_entered
+                0x20015b58                bios_wboot_entered
+                0x20015b9c                bios_cboot
+                0x20015bc0                bios_wboot
+                0x20015bec                bios_const
+                0x20015c10                bios_conin
+                0x20015c34                bios_conout
+                0x20015c58                bios_list
+                0x20015c80                bios_punch
+                0x20015ca8                bios_reader
+                0x20015cd0                bios_listst
+                0x20015cf8                bios_home
+                0x20015d08                bios_seldsk
+                0x20015d2c                bios_settrk
+                0x20015d38                bios_setsec
+                0x20015d44                bios_setdma
+                0x20015d50                bios_read
+                0x20015d70                bios_write
+                0x20015d94                bios_sectran
+                0x20015d9c                bios_getmrt
+                0x20015da8                bios_getiobyte
+                0x20015db4                bios_setiobyte
+                0x20015dc0                bios_flush
+                0x20015de8                bios_setexc
+                0x20015dec                bios_getbios
+ .text          0x20015df8       0x1c consnull.o
+                0x20015df8                consnull_cboot
+                0x20015dfc                consnull_wboot
+                0x20015e00                consnull_conin
+                0x20015e04                consnull_conout
+                0x20015e08                consnull_conist
+                0x20015e0c                consnull_conost
+                0x20015e10                consnull_close
+ .text          0x20015e14       0x14 disknull.o
+                0x20015e14                disknull_boot
+                0x20015e18                disknull_select
+                0x20015e1c                disknull_read
+                0x20015e20                disknull_write
+                0x20015e24                disknull_flush
+ .text          0x20015e28       0xe0 consuart0.o
+                0x20015e28                consuart0_cboot
+                0x20015ea0                consuart0_wboot
+                0x20015ea4                consuart0_conist
+                0x20015ebc                consuart0_conin
+                0x20015ed4                consuart0_conost
+                0x20015eec                consuart0_conout
+                0x20015f04                consuart0_close
+ .text          0x20015f08      0x248 diskflash.o
+                0x20015f08                diskflash_cboot
+                0x20015f0c                diskflash_select
+                0x20015f18                diskflash_movesector
+                0x20015f2c                diskflash_read_miss
+                0x20015f5c                diskflash_read_hit
+                0x20015f78                diskflash_read
+                0x20015fa4                diskflash_eraseblock
+                0x20015fd0                diskflash_erasetrack
+                0x20015ff4                diskflash_burnsector
+                0x20016060                diskflash_burntrack
+                0x20016074                diskflash_flush
+                0x2001609c                diskflash_wboot
+                0x200160b0                diskflash_buffersector
+                0x200160d8                diskflash_buffertrack
+                0x200160f8                diskflash_write
+ .text          0x20016150      0x17c exception.o
+                0x20016150                exception
+                0x20016294                entry
+ .text          0x200162cc        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtend.o
+ .text          0x200162cc        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtn.o
+ *(.rodata)
+ .rodata        0x200162cc       0x14 glue.o
+ .rodata        0x200162e0        0x8 calledbydri.o
+
+.glue_7         0x200162e8        0x0 load address 0x00004580
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x200162e8        0x0 load address 0x00004580
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x200162e8        0x0 load address 0x00004580
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x200162e8        0x0 load address 0x00004580
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.init           0x200162e8       0x18 load address 0x00004580
+ .init          0x200162e8        0xc c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crti.o
+                0x200162e8                _init
+ .init          0x200162f4        0xc c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtn.o
+
+.fini           0x20016300       0x18 load address 0x00004598
+ .fini          0x20016300        0xc c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crti.o
+                0x20016300                _fini
+ .fini          0x2001630c        0xc c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtn.o
+
+.iplt           0x20016318        0x0 load address 0x000045b0
+ .iplt          0x00000000        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+
+.eh_frame       0x20016318        0x4 load address 0x000045b0
+ .eh_frame      0x20016318        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+ .eh_frame      0x20016318        0x4 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtend.o
+
+.rodata.str1.4  0x2001631c      0x268 load address 0x000045b4
+ .rodata.str1.4
+                0x2001631c      0x188 bdosmisc.o
+ .rodata.str1.4
+                0x200164a4       0x2f ccp.o
+                                 0x30 (size before relaxing)
+ *fill*         0x200164d3        0x1 
+ .rodata.str1.4
+                0x200164d4        0x4 calledbydri.o
+ .rodata.str1.4
+                0x200164d8       0x37 modubios.o
+                                 0x38 (size before relaxing)
+ *fill*         0x2001650f        0x1 
+ .rodata.str1.4
+                0x20016510       0x74 exception.o
+                                 0x78 (size before relaxing)
+
+.rel.dyn        0x20016584        0x0 load address 0x0000481c
+ .rel.iplt      0x00000000        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+
+.data           0x20016584      0x3a0 load address 0x0000481c
+ *(.data)
+ .data          0x20016584        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crti.o
+ .data          0x20016584        0x4 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+                0x20016584                __dso_handle
+ .data          0x20016588        0x0 bootvectors.o
+ .data          0x20016588        0x0 bstrap.o
+ .data          0x20016588        0x0 vectors.o
+ .data          0x20016588       0x8c platform.o
+                0x20016588                platform_disks
+                0x200165c8                platform_consoles
+                0x20016608                platform_mrt
+ .data          0x20016614        0xc bdosmisc.o
+                0x20016614                warning
+                0x20016618                serial
+                0x2001661c                copyrt
+ .data          0x20016620        0x0 bdosmain.o
+ .data          0x20016620        0x0 bdosrw.o
+ .data          0x20016620      0x210 ccp.o
+                0x20016620                del
+                0x20016630                cmd_tbl
+                0x20016670                msg13
+                0x20016688                msg6
+                0x20016694                msg
+                0x200166b0                msg2
+                0x200166c4                msg7
+                0x200166dc                msg3
+                0x200166f0                msg4
+                0x20016704                msg5
+                0x2001671c                msg8
+                0x2001673c                msg9
+                0x2001674c                msg10
+                0x20016760                msg11
+                0x20016778                lderr1
+                0x200167a0                lderr2
+                0x200167bc                lderr3
+                0x200167e0                lderr4
+                0x200167f4                lderr5
+                0x20016804                lderror
+                0x20016818                msg12
+ .data          0x20016830        0x0 conbdos.o
+ .data          0x20016830        0x0 dskutil.o
+ .data          0x20016830        0x0 fileio.o
+ .data          0x20016830        0x0 iosys.o
+ .data          0x20016830        0x0 glue.o
+ .data          0x20016830       0x1c calledbydri.o
+                0x20016834                load_tbl
+ .data          0x2001684c        0x0 arch-m3-noicache.o
+ .data          0x2001684c       0x14 modubios.o
+                0x2001684c                bios_bios
+ .data          0x20016860       0x28 consnull.o
+                0x20016860                consnull
+ .data          0x20016888       0x24 disknull.o
+                0x20016888                disknull
+ .data          0x200168ac       0x28 consuart0.o
+                0x200168ac                consuart0
+ .data          0x200168d4       0x50 diskflash.o
+                0x200168d4                diskflash_dph
+                0x200168f0                diskflash_dpb
+                0x20016900                diskflash
+ .data          0x20016924        0x0 exception.o
+ .data          0x20016924        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtend.o
+ .data          0x20016924        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtn.o
+ *(.image)
+
+.init_array     0x20016924        0x4 load address 0x00004bbc
+ .init_array    0x20016924        0x4 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+
+.fini_array     0x20016928        0x4 load address 0x00004bc0
+ .fini_array    0x20016928        0x4 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+
+.jcr            0x2001692c        0x4 load address 0x00004bc4
+ .jcr           0x2001692c        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+ .jcr           0x2001692c        0x4 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtend.o
+
+.tm_clone_table
+                0x20016930        0x0 load address 0x00004bc8
+ .tm_clone_table
+                0x20016930        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+ .tm_clone_table
+                0x20016930        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtend.o
+
+.igot.plt       0x20016930        0x0 load address 0x00004bc8
+ .igot.plt      0x00000000        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+
+.bss            0x20016930     0x1570 load address 0x00004bc8
+ *(.bss)
+ .bss           0x20016930        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crti.o
+ .bss           0x20016930       0x1c c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+ .bss           0x2001694c        0x0 bootvectors.o
+ .bss           0x2001694c        0x0 bstrap.o
+ .bss           0x2001694c        0x0 vectors.o
+ .bss           0x2001694c        0x0 platform.o
+ .bss           0x2001694c        0x0 bdosmisc.o
+ .bss           0x2001694c        0x0 bdosmain.o
+ .bss           0x2001694c        0x0 bdosrw.o
+ .bss           0x2001694c        0x0 ccp.o
+ .bss           0x2001694c        0x0 conbdos.o
+ .bss           0x2001694c        0x0 dskutil.o
+ .bss           0x2001694c        0x0 fileio.o
+ .bss           0x2001694c        0x1 iosys.o
+ .bss           0x2001694d        0x0 glue.o
+ .bss           0x2001694d        0x3 calledbydri.o
+                0x2001694d                autost
+                0x2001694e                morecmds
+                0x2001694f                submit
+ .bss           0x20016950        0x0 arch-m3-noicache.o
+ .bss           0x20016950        0xc modubios.o
+                0x2001695a                bios_iobyte
+ .bss           0x2001695c        0x0 consnull.o
+ .bss           0x2001695c        0x0 disknull.o
+ .bss           0x2001695c        0x0 consuart0.o
+ .bss           0x2001695c     0x100c diskflash.o
+                0x2001695c                diskflash_image
+                0x20016960                diskflash_trackbuffer
+ .bss           0x20017968        0x0 exception.o
+ .bss           0x20017968        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtend.o
+ .bss           0x20017968        0x0 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtn.o
+ *(COMMON)
+ COMMON         0x20017968      0x10e bdosmain.o
+                0x20017968                gbls
+                0x20017a5c                crit_dsk
+                0x20017a60                tpa_lp
+                0x20017a64                tpa_lt
+                0x20017a68                log_dsk
+                0x20017a6c                tpa_hp
+                0x20017a70                tpa_ht
+                0x20017a74                ro_dsk
+ *fill*         0x20017a76        0x2 
+ COMMON         0x20017a78      0x2f8 ccp.o
+                0x20017a78                cur_disk
+                0x20017a7a                load_try
+                0x20017a7c                dma
+                0x20017b00                subcom
+                0x20017b81                autorom
+                0x20017b82                sub_user
+                0x20017b84                sub_index
+                0x20017b86                chain_sub
+                0x20017b88                cmdfcb
+                0x20017bac                parm
+                0x20017c24                user
+                0x20017c28                chainp
+                0x20017c2c                dirflag
+                0x20017c30                tail
+                0x20017c34                subprompt
+                0x20017c38                subfcb
+                0x20017c5c                first_sub
+                0x20017c5e                index
+                0x20017c60                end_of_file
+                0x20017c64                glb_index
+                0x20017c68                subdma
+                0x20017ce8                save_sub
+                0x20017d6c                user_ptr
+ COMMON         0x20017d70       0x82 calledbydri.o
+                0x20017d70                usercmd
+ *fill*         0x20017df2        0x2 
+ COMMON         0x20017df4       0x90 modubios.o
+                0x20017df4                bios_dirbuf
+                0x20017e74                bios_xfer
+ COMMON         0x20017e84       0x1c diskflash.o
+                0x20017e84                diskflash_alv
+                0x00000098                bstrap_copy_from = LOADADDR (.text)
+                0x20011e00                bstrap_copy_to = ADDR (.text)
+                0x00004b30                bstrap_copy_size = (LOADADDR (.bss) - LOADADDR (.text))
+                0x20016930                bstrap_zero_to = ADDR (.bss)
+                0x00001570                bstrap_zero_size = SIZEOF (.bss)
+                0x20017ea0                bstrap_top = (ADDR (.bss) + SIZEOF (.bss))
+                0x000060a0                bstrap_totalsize = (bstrap_top - ADDR (.text))
+LOAD bootvectors.o
+LOAD bstrap.o
+LOAD vectors.o
+LOAD platform.o
+LOAD bdosmisc.o
+LOAD bdosmain.o
+LOAD bdosrw.o
+LOAD ccp.o
+LOAD conbdos.o
+LOAD dskutil.o
+LOAD fileio.o
+LOAD iosys.o
+LOAD glue.o
+LOAD calledbydri.o
+LOAD arch-m3-noicache.o
+LOAD modubios.o
+LOAD consnull.o
+LOAD disknull.o
+LOAD consuart0.o
+LOAD diskflash.o
+LOAD exception.o
+START GROUP
+LOAD c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1\libgcc.a
+LOAD c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib\libc.a
+END GROUP
+LOAD c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtend.o
+LOAD c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtn.o
+OUTPUT(cpm.elf elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x31
+ .ARM.attributes
+                0x00000000       0x16 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crti.o
+ .ARM.attributes
+                0x00000016       0x30 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+ .ARM.attributes
+                0x00000046       0x21 bootvectors.o
+ .ARM.attributes
+                0x00000067       0x33 bstrap.o
+ .ARM.attributes
+                0x0000009a       0x21 vectors.o
+ .ARM.attributes
+                0x000000bb       0x33 platform.o
+ .ARM.attributes
+                0x000000ee       0x33 bdosmisc.o
+ .ARM.attributes
+                0x00000121       0x33 bdosmain.o
+ .ARM.attributes
+                0x00000154       0x33 bdosrw.o
+ .ARM.attributes
+                0x00000187       0x33 ccp.o
+ .ARM.attributes
+                0x000001ba       0x33 conbdos.o
+ .ARM.attributes
+                0x000001ed       0x33 dskutil.o
+ .ARM.attributes
+                0x00000220       0x33 fileio.o
+ .ARM.attributes
+                0x00000253       0x33 iosys.o
+ .ARM.attributes
+                0x00000286       0x33 glue.o
+ .ARM.attributes
+                0x000002b9       0x33 calledbydri.o
+ .ARM.attributes
+                0x000002ec       0x21 arch-m3-noicache.o
+ .ARM.attributes
+                0x0000030d       0x33 modubios.o
+ .ARM.attributes
+                0x00000340       0x33 consnull.o
+ .ARM.attributes
+                0x00000373       0x33 disknull.o
+ .ARM.attributes
+                0x000003a6       0x33 consuart0.o
+ .ARM.attributes
+                0x000003d9       0x33 diskflash.o
+ .ARM.attributes
+                0x0000040c       0x33 exception.o
+ .ARM.attributes
+                0x0000043f       0x30 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtend.o
+ .ARM.attributes
+                0x0000046f       0x18 c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtn.o
+
+.comment        0x00000000       0x30
+ .comment       0x00000000       0x30 bstrap.o
+                                 0x31 (size before relaxing)
+ .comment       0x00000000       0x31 platform.o
+ .comment       0x00000000       0x31 bdosmisc.o
+ .comment       0x00000000       0x31 bdosmain.o
+ .comment       0x00000000       0x31 bdosrw.o
+ .comment       0x00000000       0x31 ccp.o
+ .comment       0x00000000       0x31 conbdos.o
+ .comment       0x00000000       0x31 dskutil.o
+ .comment       0x00000000       0x31 fileio.o
+ .comment       0x00000000       0x31 iosys.o
+ .comment       0x00000000       0x31 glue.o
+ .comment       0x00000000       0x31 calledbydri.o
+ .comment       0x00000000       0x31 modubios.o
+ .comment       0x00000000       0x31 consnull.o
+ .comment       0x00000000       0x31 disknull.o
+ .comment       0x00000000       0x31 consuart0.o
+ .comment       0x00000000       0x31 diskflash.o
+ .comment       0x00000000       0x31 exception.o
+
+Cross Reference Table
+
+Symbol                                            File
+_ITM_deregisterTMCloneTable                       c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+_ITM_registerTMCloneTable                         c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+_Jv_RegisterClasses                               c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+__TMC_END__                                       c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtend.o
+                                                  c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+__deregister_frame_info                           c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+__dso_handle                                      c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+__register_frame_info                             c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crtbegin.o
+_bdos                                             bdosmain.o
+                                                  calledbydri.o
+                                                  bdosmisc.o
+_fini                                             c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crti.o
+_init                                             c:/users/roger/mentorgraphics/sourcery_codebench_lite_for_arm_eabi/bin/../lib/gcc/arm-none-eabi/4.8.1/crti.o
+abrt_err                                          bdosmisc.o
+alloc                                             fileio.o
+alltrue                                           fileio.o
+arch_enter                                        arch-m3-noicache.o
+                                                  modubios.o
+                                                  glue.o
+autorom                                           ccp.o
+autost                                            calledbydri.o
+                                                  ccp.o
+backsp                                            conbdos.o
+bdos                                              calledbydri.o
+                                                  modubios.o
+                                                  glue.o
+                                                  ccp.o
+bdosinit                                          bdosmisc.o
+                                                  modubios.o
+bdosrw                                            bdosrw.o
+                                                  bdosmain.o
+bios_bios                                         modubios.o
+bios_cboot                                        modubios.o
+                                                  exception.o
+                                                  glue.o
+bios_cboot_entered                                modubios.o
+bios_conin                                        modubios.o
+                                                  glue.o
+                                                  conbdos.o
+bios_conout                                       modubios.o
+                                                  glue.o
+                                                  conbdos.o
+bios_const                                        modubios.o
+                                                  glue.o
+                                                  conbdos.o
+bios_dirbuf                                       modubios.o
+                                                  diskflash.o
+bios_flush                                        modubios.o
+                                                  glue.o
+                                                  iosys.o
+bios_getbios                                      modubios.o
+                                                  glue.o
+bios_getiobyte                                    modubios.o
+                                                  glue.o
+                                                  bdosmain.o
+bios_getmrt                                       modubios.o
+                                                  glue.o
+                                                  bdosmisc.o
+bios_home                                         modubios.o
+                                                  glue.o
+bios_iobyte                                       modubios.o
+bios_list                                         modubios.o
+                                                  glue.o
+                                                  conbdos.o
+                                                  bdosmain.o
+bios_listst                                       modubios.o
+                                                  glue.o
+bios_punch                                        modubios.o
+                                                  glue.o
+                                                  bdosmain.o
+bios_read                                         modubios.o
+                                                  glue.o
+                                                  iosys.o
+bios_reader                                       modubios.o
+                                                  glue.o
+                                                  bdosmain.o
+bios_sectran                                      modubios.o
+                                                  glue.o
+                                                  iosys.o
+bios_seldsk                                       modubios.o
+                                                  glue.o
+                                                  iosys.o
+bios_setdma                                       modubios.o
+                                                  glue.o
+                                                  iosys.o
+bios_setexc                                       modubios.o
+                                                  bdosmisc.o
+bios_setiobyte                                    modubios.o
+                                                  glue.o
+                                                  bdosmain.o
+bios_setsec                                       modubios.o
+                                                  glue.o
+                                                  iosys.o
+bios_settrk                                       modubios.o
+                                                  glue.o
+                                                  iosys.o
+bios_wboot                                        modubios.o
+                                                  glue.o
+                                                  bdosmisc.o
+bios_wboot_entered                                modubios.o
+bios_write                                        modubios.o
+                                                  glue.o
+                                                  iosys.o
+bios_xfer                                         modubios.o
+blkindx                                           bdosrw.o
+blknum                                            bdosrw.o
+bootvectors                                       bootvectors.o
+bstrap                                            bstrap.o
+                                                  bootvectors.o
+bstrap_copy_from                                  bstrap.o
+bstrap_copy_size                                  bstrap.o
+bstrap_copy_to                                    bstrap.o
+bstrap_exception                                  bstrap.o
+                                                  bootvectors.o
+bstrap_zero_size                                  bstrap.o
+bstrap_zero_to                                    bstrap.o
+calcext                                           bdosrw.o
+                                                  fileio.o
+ccp                                               ccp.o
+                                                  modubios.o
+chain_sub                                         ccp.o
+chainp                                            ccp.o
+                                                  bdosmain.o
+                                                  bdosmisc.o
+check_cmd                                         ccp.o
+chk_colon                                         ccp.o
+chkaloc                                           dskutil.o
+close                                             fileio.o
+close_fi                                          fileio.o
+                                                  bdosrw.o
+                                                  bdosmain.o
+clraloc                                           dskutil.o
+                                                  fileio.o
+cmd_file                                          ccp.o
+cmd_tbl                                           ccp.o
+cmdfcb                                            ccp.o
+                                                  glue.o
+comments                                          ccp.o
+conbrk                                            conbdos.o
+conin                                             conbdos.o
+                                                  bdosmain.o
+                                                  bdosmisc.o
+conout                                            conbdos.o
+                                                  bdosmisc.o
+consnull                                          consnull.o
+                                                  platform.o
+consnull_cboot                                    consnull.o
+consnull_close                                    consnull.o
+consnull_conin                                    consnull.o
+consnull_conist                                   consnull.o
+consnull_conost                                   consnull.o
+consnull_conout                                   consnull.o
+consnull_wboot                                    consnull.o
+constat                                           conbdos.o
+                                                  bdosmain.o
+consuart0                                         consuart0.o
+                                                  platform.o
+consuart0_cboot                                   consuart0.o
+consuart0_close                                   consuart0.o
+consuart0_conin                                   consuart0.o
+consuart0_conist                                  consuart0.o
+consuart0_conost                                  consuart0.o
+consuart0_conout                                  consuart0.o
+consuart0_wboot                                   consuart0.o
+cookdout                                          conbdos.o
+copy_cmd                                          ccp.o
+copyrt                                            bdosmisc.o
+                                                  modubios.o
+cpy                                               ccp.o
+cr_lf                                             ccp.o
+create                                            fileio.o
+                                                  bdosrw.o
+                                                  bdosmain.o
+crit_dsk                                          bdosmain.o
+                                                  fileio.o
+                                                  dskutil.o
+                                                  bdosmisc.o
+cur_disk                                          ccp.o
+dchksum                                           dskutil.o
+decode                                            ccp.o
+del                                               ccp.o
+delete                                            fileio.o
+                                                  bdosmain.o
+delim                                             ccp.o
+dir_cmd                                           ccp.o
+dir_rd                                            dskutil.o
+                                                  bdosmisc.o
+dir_wr                                            dskutil.o
+                                                  fileio.o
+dirflag                                           ccp.o
+dirscan                                           dskutil.o
+                                                  fileio.o
+                                                  bdosrw.o
+                                                  bdosmain.o
+                                                  bdosmisc.o
+diskflash                                         diskflash.o
+                                                  platform.o
+diskflash_alv                                     diskflash.o
+diskflash_buffersector                            diskflash.o
+diskflash_buffertrack                             diskflash.o
+diskflash_burnsector                              diskflash.o
+diskflash_burntrack                               diskflash.o
+diskflash_cboot                                   diskflash.o
+diskflash_dpb                                     diskflash.o
+diskflash_dph                                     diskflash.o
+diskflash_eraseblock                              diskflash.o
+diskflash_erasetrack                              diskflash.o
+diskflash_flush                                   diskflash.o
+diskflash_image                                   diskflash.o
+diskflash_movesector                              diskflash.o
+diskflash_read                                    diskflash.o
+diskflash_read_hit                                diskflash.o
+diskflash_read_miss                               diskflash.o
+diskflash_select                                  diskflash.o
+diskflash_trackbuffer                             diskflash.o
+diskflash_wboot                                   diskflash.o
+diskflash_write                                   diskflash.o
+disknull                                          disknull.o
+                                                  platform.o
+disknull_boot                                     disknull.o
+disknull_flush                                    disknull.o
+disknull_read                                     disknull.o
+disknull_select                                   disknull.o
+disknull_write                                    disknull.o
+dma                                               ccp.o
+do_io                                             bdosrw.o
+do_phio                                           iosys.o
+                                                  fileio.o
+                                                  dskutil.o
+dollar                                            ccp.o
+echo_cmd                                          ccp.o
+end_of_file                                       ccp.o
+entry                                             exception.o
+                                                  bstrap.o
+era_cmd                                           ccp.o
+error                                             bdosmisc.o
+                                                  fileio.o
+                                                  dskutil.o
+exception                                         exception.o
+                                                  vectors.o
+execute_cmd                                       ccp.o
+ext_err                                           bdosmisc.o
+extsize                                           fileio.o
+fill_fcb                                          ccp.o
+                                                  glue.o
+find_colon                                        ccp.o
+first_sub                                         ccp.o
+flushit                                           fileio.o
+                                                  bdosmain.o
+free_sp                                           fileio.o
+                                                  bdosmain.o
+fsize                                             fileio.o
+gbls                                              bdosmain.o
+                                                  fileio.o
+                                                  dskutil.o
+                                                  conbdos.o
+                                                  bdosrw.o
+                                                  bdosmisc.o
+get_cmd                                           ccp.o
+get_parms                                         ccp.o
+get_rc                                            bdosrw.o
+getaloc                                           dskutil.o
+                                                  bdosrw.o
+getch                                             conbdos.o
+getsize                                           fileio.o
+                                                  bdosmain.o
+glb_index                                         ccp.o
+glue_callbios                                     glue.o
+                                                  calledbydri.o
+glue_enterprogram                                 glue.o
+                                                  calledbydri.o
+glue_loadcom                                      glue.o
+                                                  calledbydri.o
+glue_outhex                                       glue.o
+                                                  exception.o
+glue_outzstring                                   glue.o
+                                                  exception.o
+                                                  modubios.o
+index                                             ccp.o
+initexc                                           calledbydri.o
+                                                  bdosmisc.o
+lderr1                                            ccp.o
+lderr2                                            ccp.o
+lderr3                                            ccp.o
+lderr4                                            ccp.o
+lderr5                                            ccp.o
+lderror                                           ccp.o
+load68k                                           calledbydri.o
+                                                  ccp.o
+load_tbl                                          calledbydri.o
+                                                  ccp.o
+load_try                                          ccp.o
+log_dsk                                           bdosmain.o
+                                                  fileio.o
+                                                  dskutil.o
+                                                  bdosmisc.o
+match                                             fileio.o
+matchit                                           fileio.o
+morecmds                                          calledbydri.o
+                                                  ccp.o
+                                                  bdosmisc.o
+move                                              fileio.o
+                                                  bdosmain.o
+msg                                               ccp.o
+msg10                                             ccp.o
+msg11                                             ccp.o
+msg12                                             ccp.o
+msg13                                             ccp.o
+msg2                                              ccp.o
+msg3                                              ccp.o
+msg4                                              ccp.o
+msg5                                              ccp.o
+msg6                                              ccp.o
+msg7                                              ccp.o
+msg8                                              ccp.o
+msg9                                              ccp.o
+new_ext                                           bdosrw.o
+newline                                           conbdos.o
+openfile                                          fileio.o
+                                                  bdosrw.o
+                                                  bdosmain.o
+parm                                              ccp.o
+pgmld                                             calledbydri.o
+                                                  bdosmain.o
+platform_consoles                                 platform.o
+                                                  modubios.o
+platform_disks                                    platform.o
+                                                  modubios.o
+platform_mrt                                      platform.o
+                                                  exception.o
+                                                  modubios.o
+prompt                                            ccp.o
+prt_err                                           bdosmisc.o
+prt_line                                          conbdos.o
+                                                  bdosmain.o
+                                                  bdosmisc.o
+rawconio                                          conbdos.o
+                                                  bdosmain.o
+rdwrt                                             dskutil.o
+                                                  bdosrw.o
+readline                                          conbdos.o
+                                                  bdosmain.o
+ren_cmd                                           ccp.o
+rename                                            fileio.o
+                                                  bdosmain.o
+ro_dsk                                            bdosmain.o
+                                                  fileio.o
+                                                  dskutil.o
+                                                  bdosmisc.o
+ro_err                                            bdosmisc.o
+                                                  fileio.o
+                                                  bdosrw.o
+save_sub                                          ccp.o
+scan_cmd                                          ccp.o
+search                                            fileio.o
+                                                  bdosmain.o
+seldsk                                            fileio.o
+                                                  dskutil.o
+                                                  bdosmain.o
+serial                                            bdosmisc.o
+set_attr                                          fileio.o
+                                                  bdosmain.o
+                                                  bdosmisc.o
+set_tpa                                           bdosmisc.o
+                                                  bdosmain.o
+setaloc                                           dskutil.o
+                                                  fileio.o
+setblk                                            bdosrw.o
+setexc                                            bdosmisc.o
+                                                  bdosmain.o
+setran                                            fileio.o
+                                                  bdosmain.o
+strcmp                                            ccp.o
+sub_index                                         ccp.o
+sub_read                                          ccp.o
+sub_user                                          ccp.o
+subcom                                            ccp.o
+subdma                                            ccp.o
+subfcb                                            ccp.o
+submit                                            calledbydri.o
+                                                  ccp.o
+                                                  bdosmisc.o
+submit_cmd                                        ccp.o
+subprompt                                         ccp.o
+swap                                              calledbydri.o
+                                                  fileio.o
+                                                  bdosrw.o
+tabout                                            conbdos.o
+                                                  bdosmain.o
+tail                                              ccp.o
+                                                  glue.o
+tmp_sel                                           bdosmain.o
+                                                  fileio.o
+too_many                                          ccp.o
+tpa_hp                                            bdosmain.o
+                                                  bdosmisc.o
+tpa_ht                                            bdosmain.o
+                                                  bdosmisc.o
+tpa_lp                                            bdosmain.o
+                                                  bdosmisc.o
+tpa_lt                                            bdosmain.o
+                                                  bdosmisc.o
+translate                                         ccp.o
+traphndl                                          calledbydri.o
+                                                  bdosmisc.o
+true_char                                         ccp.o
+type_cmd                                          ccp.o
+udiv                                              calledbydri.o
+                                                  iosys.o
+                                                  fileio.o
+user                                              ccp.o
+                                                  glue.o
+user_cmd                                          ccp.o
+user_ptr                                          ccp.o
+usercmd                                           calledbydri.o
+                                                  ccp.o
+vectors                                           vectors.o
+                                                  exception.o
+warmboot                                          bdosmisc.o
+                                                  modubios.o
+                                                  arch-m3-noicache.o
+                                                  conbdos.o
+                                                  bdosmain.o
+warning                                           bdosmisc.o

@@ -1,0 +1,5 @@
+- wboot should probably get current mrt info from bdos rather than
+  just using the platform mrt.
+
+- select should probably deselect the old disk before selecting the
+  new one.

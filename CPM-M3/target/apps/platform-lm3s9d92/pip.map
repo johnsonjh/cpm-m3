@@ -1,0 +1,270 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+fastcopy            0x1               pip.o
+eretry              0x1               pip.o
+dest                0x2f              pip.o
+c_user              0x2               pip.o
+dblen               0x2               pip.o
+sbase               0x4               pip.o
+_base               0x4               glue.o
+line_no             0x4               pip.o
+getpw               0x1               pip.o
+combuf              0x84              pip.o
+buff                0x4               pip.o
+sys                 0x1               pip.o
+column              0x2               pip.o
+nsource             0x2               pip.o
+sfile               0x1               pip.o
+concat              0x1               pip.o
+quitlen             0x2               pip.o
+concnt              0x2               pip.o
+feedbase            0x2               pip.o
+f3                  0x1               pip.o
+feedlen             0x2               pip.o
+made                0x1               pip.o
+page_line           0x2               pip.o
+source              0x2f              pip.o
+bufsize             0x2               pip.o
+f2                  0x1               pip.o
+dblbuf              0x1               pip.o
+dcnt                0x2               pip.o
+main_stack          0x28              pip.o
+matchlen            0x2               pip.o
+dxfcb               0x24              pip.o
+odest               0x2f              pip.o
+cont                0x1a              pip.o
+nsbuf               0x2               pip.o
+putnum              0x1               pip.o
+sblen               0x2               pip.o
+odcnt               0x2               pip.o
+ndest               0x2               pip.o
+multcom             0x1               pip.o
+glue_brk            0x4               glue.o
+filsize             0x4               pip.o
+ver                 0x2               pip.o
+ambig               0x1               pip.o
+ro                  0x1               pip.o
+nendcmd             0x1               pip.o
+dbase               0x4               pip.o
+f4                  0x1               pip.o
+f1                  0x1               pip.o
+fcbtab              0x4               pip.o
+dfile               0x1               pip.o
+exten               0x2               pip.o
+endofsrc            0x1               pip.o
+insparc             0x1               pip.o
+ch                  0x1               pip.o
+cdisk               0x2               pip.o
+sparfil             0x1               pip.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x20000100     0x3d0c
+ *(.text)
+ .text          0x20000100       0x10 header.o
+                0x20000100                _start
+ .text          0x20000110      0x1c8 glue.o
+                0x20000110                glue_outhex
+                0x2000014c                glue_outzstring
+                0x20000174                glue_entry
+                0x200001f0                __BDOS
+                0x2000021c                _exit
+                0x2000023c                memcpy
+                0x20000270                sbrk
+ .text          0x200002d8       0x16 setjmp.o
+                0x200002d8                setjmp
+                0x200002e4                longjmp
+ *fill*         0x200002ee        0x2 
+ .text          0x200002f0     0x36c0 pip.o
+                0x200002f0                crlf
+                0x20000308                printx
+                0x20000328                print
+                0x20000344                rdcom
+                0x20000368                prname
+                0x200003b4                open
+                0x20000478                close
+                0x200004dc                search
+                0x20000540                searchn
+                0x20000598                delete
+                0x2000062c                diskrd
+                0x20000690                diskwrite
+                0x200006f4                make
+                0x200007b0                rename
+                0x20000844                setatt
+                0x200008a8                setuser
+                0x200008e8                multsect
+                0x20000950                move
+                0x2000097c                error
+                0x20000aac                nonfile_error
+                0x20000acc                setupdest
+                0x20000c8c                setupsource
+                0x20000f08                writedest
+                0x20001258                fillsource
+                0x200015a0                putdch
+                0x200016c0                putdstc
+                0x20001740                newline
+                0x20001814                putdest
+                0x200018fc                utran
+                0x20001928                ltran
+                0x20001954                getsrcc
+                0x20001b50                match
+                0x20001be0                getsrc
+                0x20001d40                rd_eof
+                0x20001dac                ckhex
+                0x20001df4                hexrecord
+                0x20001f24                ck_strings
+                0x20001f54                closedest
+                0x200022dc                size_memory
+                0x20002444                setupeob
+                0x200024d0                chkrandom
+                0x200025a8                simplecopy
+                0x200027d8                archck
+                0x20002874                next_file
+                0x20002930                multcopy
+                0x20002a34                ck_disk
+                0x20002a78                gnc
+                0x20002adc                deblank
+                0x20002b18                ck_eol
+                0x20002b38                delimiter
+                0x20002b70                a_to_i
+                0x20002be8                scanpar
+                0x20002d2c                token
+                0x20002d64                get_dev
+                0x20002dcc                scan
+                0x200032f0                get_cmd
+                0x20003434                dst_disk
+                0x20003508                disk_to_file
+                0x20003590                copy_source
+                0x20003684                _main
+ *(.rodata)
+ .rodata        0x200039b0      0x310 pip.o
+ *(.data)
+ .data          0x20003cc0        0x0 header.o
+ .data          0x20003cc0       0x14 glue.o
+ .data          0x20003cd4        0x0 setjmp.o
+ .data          0x20003cd4      0x138 pip.o
+                0x20003cd4                copyright
+                0x20003cfc                errmsg
+                0x20003d5c                extmsg
+                0x20003d8c                optype
+                0x20003da8                io
+                0x20003dc8                empty_fcb
+
+.glue_7         0x20003e0c        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x20003e0c        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x20003e0c        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x20003e0c        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x20003e0c        0x0
+ .iplt          0x00000000        0x0 header.o
+
+.igot.plt       0x20003e0c        0x0
+ .igot.plt      0x00000000        0x0 header.o
+
+.rel.dyn        0x20003e0c        0x0
+ .rel.iplt      0x00000000        0x0 header.o
+
+.bss            0x20003e0c      0x1f7
+ *(.bss)
+ .bss           0x20003e0c        0x0 header.o
+ .bss           0x20003e0c        0x0 glue.o
+ .bss           0x20003e0c        0x0 setjmp.o
+ .bss           0x20003e0c        0x8 pip.o
+ *(COMMON)
+ COMMON         0x20003e14        0x8 glue.o
+                0x20003e14                _base
+                0x20003e18                glue_brk
+ COMMON         0x20003e1c      0x1e7 pip.o
+                0x20003e1c                fastcopy
+                0x20003e1d                eretry
+                0x20003e20                dest
+                0x20003e50                c_user
+                0x20003e52                dblen
+                0x20003e54                sbase
+                0x20003e58                line_no
+                0x20003e5c                getpw
+                0x20003e60                combuf
+                0x20003ee4                buff
+                0x20003ee8                sys
+                0x20003eea                column
+                0x20003eec                nsource
+                0x20003eee                sfile
+                0x20003eef                concat
+                0x20003ef0                quitlen
+                0x20003ef2                concnt
+                0x20003ef4                feedbase
+                0x20003ef6                f3
+                0x20003ef8                feedlen
+                0x20003efa                made
+                0x20003efc                page_line
+                0x20003f00                source
+                0x20003f30                bufsize
+                0x20003f32                f2
+                0x20003f33                dblbuf
+                0x20003f34                dcnt
+                0x20003f38                main_stack
+                0x20003f60                matchlen
+                0x20003f64                dxfcb
+                0x20003f88                odest
+                0x20003fb8                cont
+                0x20003fd2                nsbuf
+                0x20003fd4                putnum
+                0x20003fd6                sblen
+                0x20003fd8                odcnt
+                0x20003fda                ndest
+                0x20003fdc                multcom
+                0x20003fe0                filsize
+                0x20003fe4                ver
+                0x20003fe6                ambig
+                0x20003fe7                ro
+                0x20003fe8                nendcmd
+                0x20003fec                dbase
+                0x20003ff0                f4
+                0x20003ff1                f1
+                0x20003ff4                fcbtab
+                0x20003ff8                dfile
+                0x20003ffa                exten
+                0x20003ffc                endofsrc
+                0x20003ffd                insparc
+                0x20003ffe                ch
+                0x20004000                cdisk
+                0x20004002                sparfil
+                0x20003e0c                __bss_start__ = ADDR (.bss)
+                0x20004003                __bss_end__ = (ADDR (.bss) + SIZEOF (.bss))
+                0x20004003                __end__ = (ADDR (.bss) + SIZEOF (.bss))
+LOAD header.o
+LOAD glue.o
+LOAD setjmp.o
+LOAD pip.o
+OUTPUT(pip.elf elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x2f
+ .ARM.attributes
+                0x00000000       0x21 header.o
+ .ARM.attributes
+                0x00000021       0x33 glue.o
+ .ARM.attributes
+                0x00000054       0x21 setjmp.o
+ .ARM.attributes
+                0x00000075       0x33 pip.o
+
+.comment        0x00000000       0x30
+ .comment       0x00000000       0x30 glue.o
+                                 0x31 (size before relaxing)
+ .comment       0x00000000       0x31 pip.o

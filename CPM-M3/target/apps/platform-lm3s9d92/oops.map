@@ -1,0 +1,59 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x20000100       0x48
+ *(.text)
+ .text          0x20000100       0x10 header.o
+                0x20000100                _start
+ .text          0x20000110       0x38 oops.o
+                0x20000110                glue_entry
+ *(.rodata)
+ *(.data)
+ .data          0x20000148        0x0 header.o
+ .data          0x20000148        0x0 oops.o
+
+.glue_7         0x20000148        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x20000148        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x20000148        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x20000148        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x20000148        0x0
+ .iplt          0x00000000        0x0 header.o
+
+.igot.plt       0x20000148        0x0
+ .igot.plt      0x00000000        0x0 header.o
+
+.rel.dyn        0x20000148        0x0
+ .rel.iplt      0x00000000        0x0 header.o
+
+.bss            0x20000148        0x0
+ *(.bss)
+ .bss           0x20000148        0x0 header.o
+ .bss           0x20000148        0x0 oops.o
+ *(COMMON)
+                0x20000148                __bss_start__ = ADDR (.bss)
+                0x20000148                __bss_end__ = (ADDR (.bss) + SIZEOF (.bss))
+                0x20000148                __end__ = (ADDR (.bss) + SIZEOF (.bss))
+LOAD header.o
+LOAD oops.o
+OUTPUT(oops.elf elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x21
+ .ARM.attributes
+                0x00000000       0x21 header.o
+ .ARM.attributes
+                0x00000021       0x21 oops.o

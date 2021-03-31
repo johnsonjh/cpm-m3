@@ -1,0 +1,108 @@
+Greetings!
+
+This is a port CP/M-68K to the ARM Cortex-M3, specifically to the
+EK-LM3S9D92 development kit for the LM3S9D92 processor.
+
+Building this requires the following:
+
+  - A Windows PC
+  - Visual Studio for the host tools. I seem to be running Visual Studio
+    Express 2013.
+  - CodeSourcery for ARM. I seem to be using Sourcery CodeBench Lite
+    2013.11-24
+
+To build the system:
+
+  - Fire up a command window.
+  - Make certain you've run vcvarsall.bat, or whatever they're calling
+    the command procedure that sets up the command-line environment for
+    Visual C.
+  - Execute the build.bat command procedure found in this directory.
+
+The command procedure compiles everything, dumping the executables into
+buildimg. You should wind up with the following things in that
+directory:
+
+  - cpm.bin, the operating system binary.
+  - dim.exe, a Windows program to manipulate a disk image, where "disk"
+    in this case means an image of the LM3S9D92 processor's internal flash.
+  - ed.com, ED compiled for the Cortex-M3.
+  - oops.com, a test program that generates an exception to ensure that
+    my exception handling is working.
+  - pip.com, PIP compiled for the Cortex-M3.
+  - stat.com, STAT compiled for the Cortex-M3.
+
+The disk image manipulator, dim.exe, is a version of CP/M-68K compiled to
+run as a guest under Windows. A handful of commands have been added to
+the CCP. When you run the program, it loads a file named romdisk.img into
+memory and allows to manipulate the image; if that file cannot be found,
+a blank image is created. You will be presented with an A> prompt; drive
+A: is the disk image you are manipulating.
+
+You'll need to do the following things:
+
+  - Merge the system into the disk image using PUTSYS CPM.BIN
+  - IMPORT the applications; wildcards are not supported:
+    - IMPORT ED.COM
+    - IMPORT OOPS.COM
+    - IMPORT PIP.COM
+    - IMPORT STAT.COM
+  - EXIT
+
+When you exit, the disk image is stored in romdisk.img. 
+
+To run the system, you need to burn romdisk.img into the processor's
+internal flash. It expects to see a terminal on UART 0 at 115,200 baud.
+
+>>>>>>>>>>>> Directories <<<<<<<<<<<<<<<<<<<<<<
+
+- buildimg: Receives the built binaries and provides a place to fiddle
+  with the disk image.
+- doc: Nothing useful here yet.
+- host-win: Tools built for the host environment. At the moment, there
+  is only one:
+  - dim: The disk image manipulator.
+- target: Stuff built for the target system.
+  - apps: Application programs.
+    - dri-8k: Sources for the DR applications I'm using. IIRC, ED and PIP
+      come from CP/M-8K while STAT comes from CP/M-68K (difficulty being
+      that the CP/M-68K versions of ED and PIP were written in PL/M).
+    - h: Includes from the system sources needed by the applications.
+    - platform-lm3s9d92: Platform-specific apps, glue, and build procedures.
+  - os: Operating system sources.
+    - dri-68k: CP/M-68K sources from Digital Research.
+    - glue: Miscellaneous glue needed to attach the system-specific stuff
+      to the CP/M-68K sources. Includes a modular BIOS that splits console
+      and disk functionality out into device drivers.
+    - h: Include files needed to build the system.
+    - platform-lm3s9d92: Platform-specific sources and build procedures for
+      the LM3S9D92 port.
+    - platform-null: Platform-specific sources and build procedures for the
+      hardware-less null target that I use to make certain all the 
+      non-specific stuff compiles and links.
+
+>>>>>>>>>>>>>> Notes <<<<<<<<<<<<<<<<<<<<<<<
+
+Currently, the system works a lot like CP/M-80. The executable format is
+a simple memory image, like a .COM file. There is a 16-byte header that
+identifies the processor architecture and TPA base so that the system
+won't try to load executables for systems with a different processor
+or memory layout. Since it's just a .COM file, variables that don't
+appear in the image (most notably, the .bss section) are not initialized.
+
+A transient program is passed a pointer to the base page, which includes
+a function pointer to the BDOS entry point. Services are (not surprisingly)
+those provided by CP/M-68K, but there are a couple of unique services and
+the modular BIOS provides some unique BIOS calls. Calling the system via
+a trap instruction is not supported. Interrupt vector manipulation via
+the CP/M-68K services is not supported.
+
+A transient program is loaded into the bottom of the TPA. The stack is placed
+at the top of the TPA. System calls run on the transient program's stack.
+
+Enjoy!
+
+-- 
+roger ivie
+rivie@ridgenet.net
+

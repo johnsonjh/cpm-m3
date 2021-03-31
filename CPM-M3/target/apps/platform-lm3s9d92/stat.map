@@ -1,0 +1,206 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+finx                0x4               stat.o
+word_blks           0x1               stat.o
+alloc               0x4               stat.o
+user_code           0x1               stat.o
+kpb                 0x4               stat.o
+_base               0x4               glue.o
+buff                0x4               stat.o
+fcbn                0x2               stat.o
+fcbsa               0x4               stat.o
+scase1              0x4               stat.o
+bfcba               0x4               stat.o
+dpb                 0x10              stat.o
+dcnt                0x2               stat.o
+fcbs                0x4               stat.o
+rodisk              0x2               stat.o
+glue_brk            0x4               glue.o
+scase2              0x4               stat.o
+fcbmax              0x2               stat.o
+ver                 0x2               stat.o
+fcbtab              0x4               stat.o
+token               0x4               stat.o
+cdisk               0x1               stat.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x20000100     0x26cc
+ *(.text)
+ .text          0x20000100       0x10 header.o
+                0x20000100                _start
+ .text          0x20000110      0x1c8 glue.o
+                0x20000110                glue_outhex
+                0x2000014c                glue_outzstring
+                0x20000174                glue_entry
+                0x200001f0                __BDOS
+                0x2000021c                _exit
+                0x2000023c                memcpy
+                0x20000270                sbrk
+ .text          0x200002d8     0x1ee0 stat.o
+                0x200002d8                blanks
+                0x200002fc                printx
+                0x20000328                new_ln
+                0x20000340                test_kbd_esc
+                0x20000374                crlf
+                0x20000384                print
+                0x200003a0                columns
+                0x200003d0                select
+                0x2000040c                set_kpb
+                0x20000490                select_disk
+                0x200004ac                count
+                0x20000584                fill
+                0x200005a8                all_map
+                0x20000604                all_fcb
+                0x200006c4                scan
+                0x20000844                parse_assign
+                0x20000868                parse_next
+                0x2000089c                match
+                0x20000908                pdecimal
+                0x20000994                p_long
+                0x20000aa8                p_unl
+                0x20000ad0                show_dv
+                0x20000af4                show_drive
+                0x20000b08                show_usr
+                0x20000b34                drivestatus
+                0x20000cbc                userstatus
+                0x20000dd8                diskstatus
+                0x20000e18                prname
+                0x20000e38                devstatus
+                0x20000e9c                values
+                0x20000f90                prcount
+                0x20001004                pralloc
+                0x20001060                prstatus
+                0x200010a0                dots
+                0x200010c0                printfn
+                0x20001100                allocate
+                0x200011e8                name_diff
+                0x2000122c                ind_name_diff
+                0x20001250                count_blks
+                0x20001304                check_user
+                0x200013ac                setfstatus
+                0x200014b8                set_sattrib
+                0x200015a8                compare_fcb
+                0x2000161c                copy_fcb
+                0x200016f0                add_fcb_blks
+                0x20001830                display
+                0x20001c84                setfatt
+                0x20001d38                getfile
+                0x20001ed0                prdrive
+                0x20001f00                setdrivestatus
+                0x20001f98                parse_it
+                0x20001fcc                devreq
+                0x200020bc                _main
+ .text          0x200021b8      0x1b0 qsort.o
+                0x200021b8                qsort
+ *(.rodata)
+ .rodata        0x20002368      0x31c stat.o
+ *(.data)
+ .data          0x20002684        0x0 header.o
+ .data          0x20002684       0x14 glue.o
+ .data          0x20002698      0x134 stat.o
+                0x20002698                error_free
+                0x2000269c                dpba
+                0x200026a0                drivename
+                0x200026a8                readonly
+                0x200026b8                readwrite
+                0x200026c8                entries
+                0x200026dc                filename
+                0x200026ec                use
+                0x200026f8                invalid
+                0x2000270c                set_to
+                0x20002718                record_msg
+                0x20002728                sattrib
+                0x20002744                devl
+                0x20002768                attribl
+                0x20002780                devr
+ .data          0x200027cc        0x0 qsort.o
+
+.glue_7         0x200027cc        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x200027cc        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x200027cc        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x200027cc        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x200027cc        0x0
+ .iplt          0x00000000        0x0 header.o
+
+.igot.plt       0x200027cc        0x0
+ .igot.plt      0x00000000        0x0 header.o
+
+.rel.dyn        0x200027cc        0x0
+ .rel.iplt      0x00000000        0x0 header.o
+
+.bss            0x200027cc       0x61
+ *(.bss)
+ .bss           0x200027cc        0x0 header.o
+ .bss           0x200027cc        0x0 glue.o
+ .bss           0x200027cc        0x4 stat.o
+                0x200027cc                sizeset
+                0x200027cd                set_attribute
+                0x200027ce                nfcbs
+ .bss           0x200027d0        0x0 qsort.o
+ *(COMMON)
+ COMMON         0x200027d0        0x8 glue.o
+                0x200027d0                _base
+                0x200027d4                glue_brk
+ COMMON         0x200027d8       0x55 stat.o
+                0x200027d8                finx
+                0x200027dc                word_blks
+                0x200027e0                alloc
+                0x200027e4                user_code
+                0x200027e8                kpb
+                0x200027ec                buff
+                0x200027f0                fcbn
+                0x200027f4                fcbsa
+                0x200027f8                scase1
+                0x200027fc                bfcba
+                0x20002800                dpb
+                0x20002810                dcnt
+                0x20002814                fcbs
+                0x20002818                rodisk
+                0x2000281c                scase2
+                0x20002820                fcbmax
+                0x20002822                ver
+                0x20002824                fcbtab
+                0x20002828                token
+                0x2000282c                cdisk
+                0x200027cc                __bss_start__ = ADDR (.bss)
+                0x2000282d                __bss_end__ = (ADDR (.bss) + SIZEOF (.bss))
+                0x2000282d                __end__ = (ADDR (.bss) + SIZEOF (.bss))
+LOAD header.o
+LOAD glue.o
+LOAD stat.o
+LOAD qsort.o
+OUTPUT(stat.elf elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x2f
+ .ARM.attributes
+                0x00000000       0x21 header.o
+ .ARM.attributes
+                0x00000021       0x33 glue.o
+ .ARM.attributes
+                0x00000054       0x33 stat.o
+ .ARM.attributes
+                0x00000087       0x33 qsort.o
+
+.comment        0x00000000       0x30
+ .comment       0x00000000       0x30 glue.o
+                                 0x31 (size before relaxing)
+ .comment       0x00000000       0x31 stat.o
+ .comment       0x00000000       0x31 qsort.o
