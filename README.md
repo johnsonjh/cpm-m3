@@ -1,7 +1,5 @@
 # CP/M-M3
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ba95a699faed460e9fba286aa27558c6)](https://app.codacy.com/gh/johnsonjh/cpm-m3?utm_source=github.com&utm_medium=referral&utm_content=johnsonjh/cpm-m3&utm_campaign=Badge_Grade_Settings)
-
 ## Summary
 
 This is a port of **CP/M-68K** to the **ARM Cortex-M3**, specifically, the
